@@ -1,0 +1,53 @@
+BIRTHDAY QUIZ - SETUP
+
+WHAT TO EDIT BEFORE DEPLOYING
+
+1. public/questions.json
+   All text lives here: her name (meta.herName), your name, the questions, the options, the reactions, the birthday message, the gift name (meta.giftName).
+   Option order matters because answer-key.json refers to options by position (0 is the first option, 1 the second, and so on).
+
+2. netlify/lib/answer-key.json
+   One number per scored question.
+   For the questions in "Part 1" (her1 to her4) the number is YOUR guess about her.
+   For the questions in "Part 2" (me1 to me3) the number is the TRUE answer about you.
+   This file runs only on the server, so she cannot read it from the page source.
+   The shipped values are placeholders. Replace them.
+
+3. public/gift.jpg
+   A photo of the Lego set. Until you add it, a generic brick illustration is shown instead.
+
+4. Optional: meta.whatsappNumber in questions.json
+   Digits only, with country code, for example 351912345678. When filled in, a "tell Luis on WhatsApp" button appears after she accepts a side quest. Leave it empty to hide the button.
+
+5. The runaway button question (me4) is not scored. Its second option is the one that runs away.
+
+DEPLOY (Netlify CLI)
+
+   npm install
+   npm install -g netlify-cli
+   netlify login
+   netlify init
+   netlify env:set RESULTS_TOKEN "pick-a-long-random-string"
+   netlify deploy --prod
+
+Netlify Blobs (the database) needs no setup. It is enabled automatically for the site.
+Deploying through Git also works. Do not use the drag-and-drop uploader, because it does not install the function dependencies.
+
+READING HER ANSWERS
+
+Open https://YOUR-SITE.netlify.app/results.html and paste the RESULTS_TOKEN value.
+You see every session with its answers and score. The page is not linked from anywhere and is marked noindex.
+The raw data is also available from GET /api/results with the header "Authorization: Bearer <token>".
+
+LOCAL TESTING
+
+   npm install
+   netlify dev
+
+Then open the local address that the command prints. The database works locally too.
+Set RESULTS_TOKEN for local runs with: netlify env:set RESULTS_TOKEN "test" (or a .env file).
+
+SCORING
+
+Her score = 78 + round(22 * matches / scored questions). All matches gives 100. No matches gives 78.
+The score is calculated on the server from the saved answers.

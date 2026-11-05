@@ -1,0 +1,220 @@
+{
+  "meta": {
+    "herName": "Inês",
+    "myName": "Luís",
+    "title": "Nível 18 desbloqueado",
+    "tagline": "Um pequeno quiz para o aniversário da {name}.",
+    "intro": [
+      "Parte 1: Tu respondes e vês as escolhas que eu já guardei.",
+      "Parte 2: Tu respondes a perguntas sobre mim.",
+      "Parte 3: Uma side quest, um score de compatibilidade e, por fim, uma surpresa."
+    ],
+    "saveNotice": "Nota fofa: as tuas respostas são guardadas para que eu as possa ler depois. Sem julgamentos... quase sempre.",
+    "startLabel": "Começar",
+    "nextLabel": "Seguinte",
+    "finishLabel": "Calcular compatibilidade",
+    "matchReactions": [
+      "Já sabia.",
+      "Previsível. Pela positiva.",
+      "Fixado, como esperado.",
+      "Acertei em cheio."
+    ],
+    "missReactions": [
+      "Ok, claramente preciso de mais dados.",
+      "Reviravolta. Anotado.",
+      "Errei, mas ainda estou a aprender.",
+      "Interessante..."
+    ],
+    "loadingLines": [
+      "A compilar sentimentos...",
+      "A cruzar respostas...",
+      "A remover bugs da matemática...",
+      "A aplicar o limite mínimo de segurança de 78%..."
+    ],
+    "compatibilityLabel": "Pontuação de compatibilidade",
+    "scoreNote": "Pontuações abaixo de 78% não são suportadas nesta versão.",
+    "matchesLine": "{matches} de {total} respostas em sintonia",
+    "giftTitle": "O teu presente chegou",
+    "giftName": "O teu conjunto Lego",
+    "giftImage": "gift.jpg",
+    "giftAlt": "O teu presente",
+    "openGiftLabel": "Abre o teu presente",
+    "birthdayMessage": [
+      "Feliz 18.º aniversário, {name}.",
+      "Ainda bem que nos conhecemos este ano. Agora vai construir qualquer coisa."
+    ],
+    "retryLabel": "Jogar outra vez",
+    "errorLine": "Algo correu mal ao comunicar com o servidor.",
+    "retryErrorLabel": "Tentar novamente",
+    "whatsappNumber": "",
+    "whatsappLabel": "Diz também ao {me} no WhatsApp",
+    "whatsappText": "Olá, sou a {name}. Acabei o quiz.",
+    "consoleMessage": "Olá, {name}. Boa, abriste a consola. As respostas estão num servidor, por isso nada de batota. Parabéns!"
+  },
+  "sections": [
+    {
+      "id": "her",
+      "title": "Parte 1: Até que ponto é que o {me} te conhece?",
+      "subtitle": "Responde com sinceridade. Eu já fixei os meus palpites.",
+      "chipLabel": "{me}",
+      "questions": [
+        {
+          "id": "her1",
+          "scored": true,
+          "text": "Escolhe a tua sexta-feira à noite ideal.",
+          "options": [
+            "Filme aconchegante em casa",
+            "Sair com amigos",
+            "Jogar ou construir alguma coisa",
+            "Ficar a estudar até às 4 da manhã"
+          ]
+        },
+        {
+          "id": "her2",
+          "scored": true,
+          "text": "A tua situação com o café:",
+          "options": [
+            "Preto, puro preto",
+            "Com leite, sem açúcar",
+            "Tanto açúcar que conta como sobremesa",
+            "Não bebo café"
+          ]
+        },
+        {
+          "id": "her3",
+          "scored": true,
+          "text": "Qual é a dificuldade da universidade que mais tem a ver contigo?",
+          "options": [
+            "Acordar para a aula da manhã",
+            "Ter saudades da malta de New Towers",
+            "Fazer debug ao código às 2h da manhã",
+            "Morrer de saudades do Luís"
+          ]
+        },
+        {
+          "id": "her4",
+          "scored": true,
+          "text": "Escolhe um superpoder.",
+          "options": [
+            "Teletransporte",
+            "Parar o tempo",
+            "Uma bateria que nunca descarrega",
+            "Falar com pombos (têm imenso para contar)"
+          ]
+        },
+        {
+          "id": "her5",
+          "scored": true,
+          "text": "Escolhe o teu tópico de conversa favorito.",
+          "options": [
+            "Debater sobre K-Pop",
+            "Argumentar que as banheiras devem ser brancas",
+            "Qualquer conversa que dê para ver a opinião dos outros",
+            "Dizer quanto gostas de mim"
+          ]
+        },
+        {
+          "id": "her6",
+          "scored": true,
+          "text": "Qual é a tua comida favorita?",
+          "options": [
+            "A Tatiana e os seus cães... (eye rolling emoji)",
+            "Pizza",
+            "Nachos",
+            "Pastilha (n é refeição, inteligencia...)"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "me",
+      "title": "Parte 2: A tua vez",
+      "subtitle": "Agora adivinha o que é verdade sobre mim.",
+      "chipLabel": "Verdade",
+      "questions": [
+        {
+          "id": "me1",
+          "scored": true,
+          "text": "Quantas horas é que consigo estudar contigo?",
+          "options": [
+            "Uhhhh, 0h?",
+            "1h e já vou com sorte...",
+            "Só eu (o luis) é que estuda :P",
+            "12h 💪💪💪"
+          ]
+        },
+        {
+          "id": "me2",
+          "scored": true,
+          "text": "Com tempo ilimitado, o que é que eu construiria primeiro?",
+          "options": [
+            "Um jogo para o Dinis",
+            "Um robô que me massaja as costas",
+            "Uma empresa e uma família feliz",
+            "Uma família com 14 mini-mafarricos"
+          ]
+        },
+        {
+          "id": "me3",
+          "scored": true,
+          "text": "O {me} num fim de semana livre:",
+          "options": [
+            "A programar por diversão",
+            "A dormir até ao meio-dia",
+            "Desporto ou ginásio",
+            "A não fazer nada, profissionalmente"
+          ]
+        },
+        {
+          "id": "me4",
+          "scored": false,
+          "text": "O {me} é a pessoa mais engraçada que conheces?",
+          "options": [
+            "Sim, obviamente",
+            "Não, não gosto dele..."
+          ],
+          "runaway": 1,
+          "dodgeLabels": [
+            "Não (boa tentativa)",
+            "Não (404: não encontrado)",
+            "Não (ainda não implementei o não)",
+            "Não (contacta o suporte técnico)",
+            "Não (o botão é tímido)",
+            "Não (já pensaste em Sim?)"
+          ],
+          "reactions": [
+            "Correto. Isto não está em discussão.",
+            ""
+          ]
+        }
+      ]
+    },
+    {
+      "id": "quest",
+      "title": "Parte 3: Side Question",
+      "subtitle": "Opcional. Zero pressão. Escolhe o que te parecer divertido.",
+      "chipLabel": "",
+      "questions": [
+        {
+          "id": "quest1",
+          "scored": false,
+          "share": true,
+          "text": "Escolhe a próxima side-quest.",
+          "options": [
+            "Café e um longo passeio à beira rio",
+            "Noite de cinema com petiscos (eu sou o petisco)",
+            "Montar um conjunto Lego juntos",
+            "Talvez noutra altura..."
+          ],
+          "decline": 3,
+          "reactions": [
+            "Missão aceite. Vamos caminhar!",
+            "Missão aceite. Ui, não sabia que era apetitoso :P",
+            "Missão aceite. Ups, como é que adivinhate o que vem a seguir?",
+            "Sem pressão nenhuma. A oferta continua de pé, bb."
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-label="A stack of colorful bricks">
+  <rect width="400" height="300" rx="24" fill="#ffe3f1"/>
+  <g>
+    <rect x="70" y="190" width="260" height="70" rx="8" fill="#ff5fa8"/>
+    <g fill="#ff5fa8">
+      <rect x="92" y="176" width="36" height="16" rx="6"/>
+      <rect x="146" y="176" width="36" height="16" rx="6"/>
+      <rect x="200" y="176" width="36" height="16" rx="6"/>
+      <rect x="254" y="176" width="36" height="16" rx="6"/>
+    </g>
+    <rect x="70" y="248" width="260" height="12" rx="6" fill="#d93a86"/>
+  </g>
+  <g>
+    <rect x="110" y="120" width="180" height="62" rx="8" fill="#8c4dff"/>
+    <g fill="#8c4dff">
+      <rect x="130" y="106" width="36" height="16" rx="6"/>
+      <rect x="182" y="106" width="36" height="16" rx="6"/>
+      <rect x="234" y="106" width="36" height="16" rx="6"/>
+    </g>
+    <rect x="110" y="170" width="180" height="12" rx="6" fill="#6a2fd6"/>
+  </g>
+  <g>
+    <rect x="150" y="56" width="100" height="56" rx="8" fill="#ffc83d"/>
+    <g fill="#ffc83d">
+      <rect x="166" y="42" width="30" height="16" rx="6"/>
+      <rect x="204" y="42" width="30" height="16" rx="6"/>
+    </g>
+    <rect x="150" y="100" width="100" height="12" rx="6" fill="#e0a516"/>
+  </g>
+</svg>

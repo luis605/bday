@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Results</title>
+<style>
+  :root {
+    color-scheme: light;
+    --bg: #fff0f7;
+    --card: #ffffff;
+    --pink: #e8408f;
+    --ink: #3b1029;
+    --muted: #8a4a6c;
+    --line: #f5c9de;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 24px 16px 48px;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    line-height: 1.45;
+  }
+  main { max-width: 720px; margin: 0 auto; }
+  h1 { margin: 0 0 16px; font-size: 1.6rem; color: var(--pink); }
+  form { display: flex; gap: 8px; margin-bottom: 20px; }
+  input {
+    flex: 1;
+    min-width: 0;
+    padding: 10px 12px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    font-size: 1rem;
+  }
+  button {
+    padding: 10px 16px;
+    border: 0;
+    border-radius: 10px;
+    background: var(--pink);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .status { margin: 0 0 16px; color: var(--muted); }
+  .error { color: #b3123f; font-weight: 700; }
+  .session {
+    margin-bottom: 16px;
+    padding: 16px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+  }
+  .head {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+  }
+  .score { font-weight: 800; color: var(--pink); }
+  .when { color: var(--muted); font-size: 0.9rem; }
+  dl { margin: 0; }
+  dt { margin-top: 10px; color: var(--muted); font-size: 0.9rem; }
+  dd { margin: 2px 0 0; font-weight: 700; }
+  .partial { color: var(--muted); font-style: italic; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Quiz results</h1>
+  <form id="form">
+    <input id="token" type="password" placeholder="Results token" autocomplete="off" required>
+    <button type="submit">Load</button>
+  </form>
+  <p id="status" class="status"></p>
+  <div id="list"></div>
+</main>
+<script>
+(function () {
+  const form = document.getElementById("form");
+  const tokenInput = document.getElementById("token");
+  const statusNode = document.getElementById("status");
+  const list = document.getElementById("list");
+
+  try {
+    const saved = sessionStorage.getItem("results-token");
+    if (saved) {
+      tokenInput.value = saved;
+      load(saved);
+    }
+  } catch {}
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    load(tokenInput.value.trim());
+  });
+
+  function el(tag, className, text) {
+    const node = document.createElement(tag);
+    if (className) node.className = className;
+    if (text != null) node.textContent = text;
+    return node;
+  }
+
+  function when(iso) {
+    const d = new Date(iso);
+    return Number.isNaN(d.getTime()) ? iso : d.toLocaleString();
+  }
+
+  async function load(token) {
+    statusNode.className = "status";
+    statusNode.textContent = "Loading...";
+    list.replaceChildren();
+    try {
+      const res = await fetch("/api/results", { headers: { authorization: "Bearer " + token } });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        statusNode.className = "status error";
+        statusNode.textContent = data.error || "Request failed (" + res.status + ")";
+        return;
+      }
+      try {
+        sessionStorage.setItem("results-token", token);
+      } catch {}
+      statusNode.textContent = data.count + " session" + (data.count === 1 ? "" : "s");
+      for (const session of data.sessions) list.append(render(session));
+    } catch {
+      statusNode.className = "status error";
+      statusNode.textContent = "Could not reach the server.";
+    }
+  }
+
+  function render(session) {
+    const box = el("section", "session");
+    const head = el("div", "head");
+    head.append(
+      el(
+        "span",
+        session.result ? "score" : "partial",
+        session.result
+          ? session.result.percent + "% (" + session.result.matches + "/" + session.result.total + " in sync)"
+          : "Not finished",
+      ),
+      el("span", "when", "Started " + when(session.createdAt)),
+    );
+    box.append(head);
+
+    const dl = el("dl");
+    for (const entry of Object.values(session.answers)) {
+      dl.append(el("dt", null, entry.question), el("dd", null, entry.label));
+    }
+    box.append(dl);
+    return box;
+  }
+})();
+</script>
+</body>
+</html>
